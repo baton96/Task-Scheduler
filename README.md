@@ -50,18 +50,18 @@ Sequential algorithm had to be a simple heuristic performing n iterations while 
 10. Save the assignments to the output file and exit
 
 In a report we had to present a table containing results of the sequential algorithm (sum of delays SEQ and runtime in ms) and comparison with the base algorithm results BASE for the generated instances. My table of results looks as follows:
-n | runtime | SEQ | BASE | (BASE–SEQ)/SEQ*100% |
-- | - | - | - | - |
-50 | 2 | 68 | 2475 | 3539,71%
-100 | 3 | 596 | 14356 | 2308,72%
-150 | 4 | 297 | 30621 | 10210,10%
-200 | 5 | 355 | 62750 | 17576,06%
-250 | 7 | 1338 | 105479 | 7783,33%
-300 | 8 | 1818 | 140465 | 7626,35%
-350 | 9 | 1081 | 199317 | 18338,21%
-400 | 10 | 1979 | 274755 | 13783,53%
-450 | 11 | 3707 | 346451 | 9245,86%
-500 | 13 | 2809 | 408297 | 14435,32%
+| n | runtime | SEQ | BASE | (BASE–SEQ)/SEQ*100% |
+| - | - | - | - | - |
+| 50 | 2 | 68 | 2475 | 3539,71% |
+| 100 | 3 | 596 | 14356 | 2308,72% |
+| 150 | 4 | 297 | 30621 | 10210,10% |
+| 200 | 5 | 355 | 62750 | 17576,06% |
+| 250 | 7 | 1338 | 105479 | 7783,33% |
+| 300 | 8 | 1818 | 140465 | 7626,35% |
+| 350 | 9 | 1081 | 199317 | 18338,21% |
+| 400 | 10 | 1979 | 274755 | 13783,53% |
+| 450 | 11 | 3707 | 346451 | 9245,86% |
+| 500 | 13 | 2809 | 408297 | 14435,32% |
 
 We also had to provide total runtime (**_72 ms_**) and the average value of the last column (**_10484,72%_**).
 # ADVANCED ALGORITHM
@@ -73,18 +73,18 @@ Our advanced algorithm could be any algorithm that solves the analyzed problem i
 5. If the runtime limit of 10*n ms, where n is the number of tasks, has been exceeded save the best assignments to the output file and exit
 
 In a report we had to present a table containing results of the advanced algorithm (sum of delays ADV and runtime in ms) and comparison with the sequential algorithm results SEQ for the generated instances. My table of results looks as follows:
-n | runtime | ADV | SEQ | (SEQ–ADV)/ADV*100%
-- | - | - | - | -
-50 | 156 | 61 | 68 | 11,48%
-100 | 733 | 455 | 596 | 30,99%
-150 | 1512 | 283 | 297 | 4,95%
-200 | 2010 | 306 | 355 | 16,01%
-250 | 2365 | 1066 | 1338 | 25,52%
-300 | 3002 | 1379 | 1818 | 31,83%
-350 | 3507 | 850 | 1081 | 27,18%
-400 | 4013 | 1503 | 1979 | 31,67%
-450 | 4504 | 2760 | 3707 | 34,31%
-500 | 5014 | 2145 | 2809 | 30,96%
+| n | runtime | ADV | SEQ | (SEQ–ADV)/ADV*100% |
+| - | - | - | - | - |
+| 50 | 156 | 61 | 68 | 11,48% |
+| 100 | 733 | 455 | 596 | 30,99% |
+| 150 | 1512 | 283 | 297 | 4,95% |
+| 200 | 2010 | 306 | 355 | 16,01% |
+| 250 | 2365 | 1066 | 1338 | 25,52% |
+| 300 | 3002 | 1379 | 1818 | 31,83% |
+| 350 | 3507 | 850 | 1081 | 27,18% |
+| 400 | 4013 | 1503 | 1979 | 31,67% |
+| 450 | 4504 | 2760 | 3707 | 34,31% |
+| 500 | 5014 | 2145 | 2809 | 30,96% |
 
 We also had to provide total runtime (**_26,816 s_**) and the average value from of last column (**_24,49%_**).
 
