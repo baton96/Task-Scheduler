@@ -1,0 +1,52 @@
+# TESTS
+
+Tests of all letter algorithms in a laboratory group
+ each person tests with the use of a verifier in (2) the algorithms of all group members for 10
+own test instances, saving the obtained criterion value and algorithm running time
+ completing the Excell file by the laboratory group - each person fills in all
+columns in the table with the criterion values ​​(tab "A1_K") and time
+calculations ("A1_T" tab) for 10 lines corresponding to an instance of a given person
+ selective verification consisting in the selection of several instances and verification of compliance of results
+returned by all verifiers
+ file analysis by the group in terms of algorithm quality, algorithm ranking and reconciliation
+based on the order of presentation
+ file analysis for "quality" test instances
+
+Tests of all letter algorithms in a laboratory group
+/ analogous to tests of the letter algorithm /
+ each person tests with the use of a verifier in (2) the algorithms of all group members for 10
+own test instances, saving the obtained criterion value and algorithm running time
+ completing the Excell file by the laboratory group - each person fills in all
+columns in the table with the criterion values ​​(tab "A2_K") and time
+calculations ("A2_T" tab) for 10 lines corresponding to the person's instance
+ selective verification consisting in the selection of several instances and verification of compliance of results
+returned by all verifiers
+ file analysis for algorithm quality, algorithm ranking and reconciliation on this
+based on the order of presentation
+ file analysis for "quality" test instances
+
+# TESTY
+Testy wszystkich algorytmów listowych w grupie laboratoryjnej
+ każda osoba testuje z użyciem weryfikatora w trybie (2) algorytmy wszystkich członków grupy dla 10
+własnych instancji testowych zapisując uzyskaną wartość kryterium i czas działania algorytmu
+ uzupełnienie przez grupę laboratoryjną zbiorczego pliku Excell – każda osoba wypełnia wszystkie
+kolumny w tabeli wyznaczonymi przez siebie wartościami kryterium (zakładka „A1_K”) oraz czasem
+obliczeń (zakładka „A1_T”) dla 10 wierszy odpowiadających instancji autorstwa danej osoby
+ wybiórcza weryfikacja polegająca na wyborze kilku instancji i weryfikacji zgodności wyników
+zwracanych przez weryfikatory wszystkich osób
+ analiza pliku przez grupę pod kątem jakości algorytmów, ustalenie rankingu algorytmów i uzgodnienie
+na tej podstawie kolejności prezentacji
+ analiza pliku pod kątem „jakości” instancji testowych
+
+Testy wszystkich algorytmów listowych w grupie laboratoryjnej
+/analogiczne do testów algorytmu listowego/
+ każda osoba testuje z użyciem weryfikatora w trybie (2) algorytmy wszystkich członków grupy dla 10
+własnych instancji testowych zapisując uzyskaną wartość kryterium i czas działania algorytmu
+ uzupełnienie przez grupę laboratoryjną zbiorczego pliku Excell – każda osoba wypełnia wszystkie
+kolumny w tabeli wyznaczonymi przez siebie wartościami kryterium (zakładka „A2_K”) oraz czasem
+obliczeń (zakładka „A2_T”) dla 10 wierszy odpowiadających instancji autorstwa danej osoby
+ wybiórcza weryfikacja polegająca na wyborze kilku instancji i weryfikacji zgodności wyników
+zwracanych przez weryfikatory wszystkich osób
+ analiza pliku pod kątem jakości algorytmów, ustalenie rankingu algorytmów i uzgodnienie na tej
+podstawie kolejności prezentacji
+ analiza pliku pod kątem „jakości” instancji testowych
