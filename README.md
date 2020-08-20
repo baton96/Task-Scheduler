@@ -1,9 +1,9 @@
 # SHORT VERSION
-My task scheduling algorithms produced the best results for **_xx/xx (xx%)_** of the input instances among all sequential (assigning tasks one by one) algorithms and for yy/yy (yy%)  of the input instances among all advanced (allowing post-optimization) algorithms proposed by my x colleagues in laboratory group.
-# LONG VERSION
-# GOAL
+My task scheduling algorithms produced the best results for **86,43%** of the input instances among all sequential (assigning tasks one by one) algorithms and for **61,24%** of the input instances among all advanced (allowing post-optimization) algorithms proposed in my laboratory group.
+# LONGER VERSION
+## GOAL
 Our goal was to propose an algorithm assigning n indivisible tasks Tj (described by the duration pj, ready time rj and expected finish time dj) to 4 identical, parallel machines and determining the order of their execution on the machines minimizing the sum of delays ΣDj between expected finish time dj and actual finish time Cj given the formula Dj = max(0, Cj-dj). In order to compare algorithms proposed within my group we had to standardize their input and output format.
-# INPUT
+## INPUT
 First we had to generate instances and save it in a text file with the following format:
 ```
 n
@@ -14,8 +14,8 @@ pn rn dn
 ```
 (number of tasks n in the first line the and in every other line duration pj, ready time rj and expected finish time dj separated by a spaces)
 
-Each person in my group generated (and made available to everyone) 10 instances of the problem for the number of tasks n equal to 50, 100, 150, 200, 250, 300, 350, 400, 450 and 500.
-# OUTPUT
+Each person in my group generated (and made available to everyone) 10 instances of the problem for the number of tasks **_n_** equal to 50, 100, 150, 200, 250, 300, 350, 400, 450 and 500.
+## OUTPUT
 Our algorithms had to return a solution in the form of a text file with the following format:
 ```
 ΣDj
@@ -25,10 +25,10 @@ T3.1 T3.2 …
 T4.1 T4.2 …
 ```
 (sum of delays in the first line and in the next 4 lines task sequences assigned to each machine, separated by spaces separated by spaces where tasks are represented by the line number of their appearance in the input file)
-# VERIFIER
-In order to to verify correctness (correct sum of delays for the given instance and schedule) of the solution we had to propose veryfier.
-# BASE ALGORITHM
-Base algorithm had to return solution containing all the tasks in the ascending order divided in a way that first three machines are assigned with ⌈n/4⌉ tasks and last machine with remaining tasks. Solution has to start with the sum of delays Dj, in the first line, calculated for the given instance and schedule. Solution for n=10 looks as follows: 
+## VERIFIER
+In order to verify correctness (correct sum of delays for the given instance and schedule) of the solution we had to propose a verifier.
+## BASE ALGORITHM
+Base algorithm had to return a solution containing all the tasks in the ascending order divided in a way that the first three machines are assigned with ⌈n/4⌉ tasks and the last machine with remaining tasks. Solution has to start with the sum of delays Dj, in the first line, calculated for the given instance and schedule. Solution for n=10 looks as follows: 
 ```
 ΣDj
 1 2 3
@@ -36,8 +36,8 @@ Base algorithm had to return solution containing all the tasks in the ascending 
 7 8 9
 10
 ```
-# SEQUENTIAL ALGORITHM
-Sequential algorithm had to be a simple heuristic performing n iterations while selecting one task from the set of an unscheduled tasks in each iteration and assigning it to the one of the machines. Algorithm design had to include a proposal of a way how to organize and select tasks. As a report we had to provide a brief description of the algorithm, in particular the description of the task selection rules and the machine selection rules. My sequential algorithm works as follows:
+## SEQUENTIAL ALGORITHM
+Sequential algorithm had to be a simple heuristic performing n iterations while selecting one task from the set of unscheduled tasks in each iteration and assigning it to the one of the machines. Algorithm design had to include a proposal of a way how to organize and select tasks. As a report we had to provide a brief description of the algorithm, in particular the description of the task selection rules and the machine selection rules. My sequential algorithm works as follows:
 1. Load input instance
 2. Sort tasks by their ready time in ascending order
 3. Enter infinite loop
@@ -64,8 +64,8 @@ In a report we had to present a table containing results of the sequential algor
 | 500 | 13 | 2809 | 408297 | 14435,32% |
 
 We also had to provide total runtime (**_72 ms_**) and the average value of the last column (**_10484,72%_**).
-# ADVANCED ALGORITHM
-Our advanced algorithm could be any algorithm that solves the analyzed problem including algorithms optimizing solutions obtained from sequential algorithm.  One of the restrictions was that algorithm had to work within the 10*n ms time limit where n is the number of tasks. Advanced algorithm chosen by me was based on a Tabu search, because in every optimizing iteration I forbid one move (assigning given task to a given machine). My advanced algorithm works as follows:
+## ADVANCED ALGORITHM
+Our advanced algorithm could be any algorithm that solves the analyzed problem including algorithms optimizing solutions obtained from sequential algorithms.  One of the restrictions was that algorithm had to work within the 10*n ms time limit where n is the number of tasks. Advanced algorithm chosen by me was based on a Tabu search, because in every optimizing iteration I forbid one move (assigning a given task to a given machine). My advanced algorithm works as follows:
 1. Follow steps 1-9 of the sequential algorithm
 2. Save in the memory information about the context of the obtained solution such as assignments, awaiting queue, machine ready times and task start times
 3. For each task (from the latest to the earliest start time) create a copy of the context of the obtained solution so that it corresponds to the situation before the given task was assigned and then follow the sequential algorithm steps in the given context forbidding selection of the originally used machine in the first iteration
@@ -88,5 +88,10 @@ In a report we had to present a table containing results of the advanced algorit
 
 We also had to provide total runtime (**_26,816 s_**) and the average value from of last column (**_24,49%_**).
 
-# TESTS
-# TODO
+## TESTS
+Testing phase looked as follows:
+1. Testing algorithms of all group members with own test instances saving obtained sum of delays and running times
+2. Filling shared Excel file with sum of delays and running times corresponding to a given test instance
+3. Selective verification consisting of the selection of several instances and verification of compliance of results returned by all verifiers
+4. File analysis in terms of test instances quality and algorithm quality 
+5. Determining the ranking of algorithms
