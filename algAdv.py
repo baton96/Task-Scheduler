@@ -2,27 +2,17 @@ import sys
 from copy import deepcopy
 from time import time
 
-
-def loadLine(file):
-    return [int(i) for i in file.readline().strip().split(' ')]
-
-
-def argmin(arr, key=lambda x: x[1]):
-    return min(enumerate(arr), key=key)[0]
-
-
-def argmax(arr, key=lambda x: x[1]):
-    return max(enumerate(arr), key=key)[0]
+from utils import argmax, argmin, loadLine, Task
 
 
 def verify(schedules, env):
     result = 0
     for schedule in schedules:
         timer = 0
-        for taskId in (i[3] + 1 for i in schedule):
+        for taskId in (i.i + 1 for i in schedule):
             task = env['originalTasks'][taskId - 1]
-            timer = max(timer, task[1]) + task[0]
-            result += max(0, timer - task[2])
+            timer = max(timer, task.r) + task.p
+            result += max(0, timer - task.d)
     return result
 
 
@@ -41,23 +31,23 @@ def algAdv(forbidden, env):
         else:
             timerId = argmin(timers)
         if (time() - env['start']) * 100 > env['n']: return
-        ready = [task for task in awaiting if task[1] <= timers[timerId]]
+        ready = [task for task in awaiting if task.r <= timers[timerId]]
         if not ready:
             popped = min(
-                [task for task in awaiting if task[1] > timers[timerId]],
-                key=lambda x: x[1]
+                [task for task in awaiting if task.r > timers[timerId]],
+                key=lambda x: x.r
             )
-            timers[timerId] = popped[1]
+            timers[timerId] = popped.r
         else:
             popped = max(
                 ready,
-                key=lambda x: (min(0, timers[timerId] + x[0] - x[2]), -x[0])
+                key=lambda x: (min(0, timers[timerId] + x.p - x.d), -x.p)
             )
         awaiting.remove(popped)
         schedules[timerId] += [popped]
-        actualStart = max(timers[timerId], popped[1])
+        actualStart = max(timers[timerId], popped.r)
         started[timerId] += [actualStart]
-        timers[timerId] = actualStart + popped[0]
+        timers[timerId] = actualStart + popped.p
         counter += 1
         if counter == n:
             criterium = verify(schedules, env)
@@ -77,8 +67,8 @@ def algList():
     env = {'start': time(), 'break': False}
     with open(sys.argv[1], 'r') as file:
         n = loadLine(file)[0]
-        env['originalTasks'] = [loadLine(file) + [i] for i in range(n)]
-    tasks = sorted(env['originalTasks'], key=lambda x: x[1])
+        env['originalTasks'] = [Task(*loadLine(file), i) for i in range(n)]
+    tasks = sorted(env['originalTasks'], key=lambda x: x.r)
 
     awaiting = []
     schedules = [[], [], [], []]
@@ -92,7 +82,7 @@ def algList():
         timerId = argmin(timers)
         if it != n:
             for i in range(it, n):
-                if tasks[i][1] <= timers[timerId]:
+                if tasks[i].r <= timers[timerId]:
                     awaiting += [tasks[i]]
                 else:
                     it = i
@@ -100,21 +90,21 @@ def algList():
             else:
                 it = n
         if not awaiting:
-            timers[timerId] = tasks[it][1]
+            timers[timerId] = tasks[it].r
             for i in range(it, n):
-                if tasks[i][1] <= timers[timerId]:
+                if tasks[i].r <= timers[timerId]:
                     awaiting += [tasks[i]]
                 else:
                     it = i
                     break
             else:
                 it = n
-        awaiting.sort(key=lambda x: (min(0, timers[timerId] + x[0] - x[2]), -x[0]))
+        awaiting.sort(key=lambda x: (min(0, timers[timerId] + x.p - x.d), -x.p))
         popped = awaiting.pop()
         schedules[timerId] += [popped]
-        started[timerId] += [max(timers[timerId], popped[1])]
-        timers[timerId] = max(timers[timerId], popped[1]) + popped[0]
-        criterium += max(0, timers[timerId] - popped[2])
+        started[timerId] += [max(timers[timerId], popped.r)]
+        timers[timerId] = max(timers[timerId], popped.r) + popped.p
+        criterium += max(0, timers[timerId] - popped.d)
         counter += 1
         if counter == n:
             break
@@ -135,7 +125,7 @@ def algList():
             env['started'][poppedId].pop()
             env['awaiting'] += [popped]
             if env['started'][poppedId]:
-                env['timers'][poppedId] = env['started'][poppedId][-1] + env['schedules'][poppedId][-1][0]
+                env['timers'][poppedId] = env['started'][poppedId][-1] + env['schedules'][poppedId][-1].p
             else:
                 env['timers'][poppedId] = 0
             env['counter'] -= 1

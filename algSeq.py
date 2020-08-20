@@ -1,29 +1,12 @@
 import sys
-from dataclasses import dataclass
 
-
-@dataclass
-class Task:
-    p: int  # processing time
-    r: int  # ready time
-    d: int  # due time
-    i: int  # id
-
-
-def loadLine(file):
-    return [int(i) for i in file.readline().strip().split(' ')]
-
-
-# I had to write my own argmin and argmax functions as we
-# weren't allowed to used any of non-built-in libs like numpy
-def argmin(arr):
-    return min(enumerate(arr), key=lambda x: x[1])[0]
+from utils import argmin, loadLine, Task
 
 
 def algList():
     with open(sys.argv[1], 'r') as file:
         n = loadLine(file)[0]
-        tasks = [Task(i=i, *loadLine(file)) for i in range(n)]
+        tasks = [Task(*loadLine(file), i) for i in range(n)]
     tasks = sorted(tasks, key=lambda x: x.r)
 
     awaiting = []
