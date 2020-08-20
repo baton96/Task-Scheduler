@@ -14,7 +14,7 @@ pn rn dn
 ```
 (number of tasks n in the first line the and in every other line duration pj, ready time rj and expected finish time dj separated by a spaces)
 
-Each person in my group generated (and made available to everyone) 10 instances of the problem for the number of tasks **_n_** equal to 50, 100, 150, 200, 250, 300, 350, 400, 450 and 500.
+Each person in my group generated (and made available to everyone) 10 instances of the problem for the number of tasks **n** equal to 50, 100, 150, 200, 250, 300, 350, 400, 450 and 500.
 ## OUTPUT
 Our algorithms had to return a solution in the form of a text file with the following format:
 ```
@@ -41,10 +41,10 @@ Sequential algorithm had to be a simple heuristic performing n iterations while 
 1. Load input instance
 2. Sort tasks by their ready time in ascending order
 3. Enter infinite loop
-4. **_Choose machine with the earliest ready time (ready to start next task)_**
+4. **Choose machine with the earliest ready time (ready to start next task)**
 5. Gather in an awaiting queue tasks ready at the moment of chosen machine’s ready time
 6. If there are no tasks in the awaiting queue set the ready time of the chosen machine to the ready time of the task, which will be ready the soonest within unscheduled tasks, and again gather in an awaiting queue tasks ready at the new moment of chosen machine’s ready time
-7. **_Within awaiting tasks assign to the chosen machine task with the highest potential delay and if multiple tasks have the same potential delay choose the shortest one_**
+7. **Within awaiting tasks assign to the chosen machine task with the highest potential delay and if multiple tasks have the same potential delay choose the shortest one**
 8. Shift the ready time of the chosen machine by the duration of the assigned task
 9. If all the tasks have been assigned exit the loop, otherwise go to the beginning of the loop
 10. Save the assignments to the output file and exit
@@ -63,7 +63,7 @@ In a report we had to present a table containing results of the sequential algor
 | 450 | 11 | 3707 | 346451 | 9245,86% |
 | 500 | 13 | 2809 | 408297 | 14435,32% |
 
-We also had to provide total runtime (**_72 ms_**) and the average value of the last column (**_10484,72%_**).
+We also had to provide total runtime (**72 ms**) and the average value of the last column (**10484,72%**).
 ## ADVANCED ALGORITHM
 Our advanced algorithm could be any algorithm that solves the analyzed problem including algorithms optimizing solutions obtained from sequential algorithms.  One of the restrictions was that algorithm had to work within the 10*n ms time limit where n is the number of tasks. Advanced algorithm chosen by me was based on a Tabu search, because in every optimizing iteration I forbid one move (assigning a given task to a given machine). My advanced algorithm works as follows:
 1. Follow steps 1-9 of the sequential algorithm
@@ -86,7 +86,7 @@ In a report we had to present a table containing results of the advanced algorit
 | 450 | 4504 | 2760 | 3707 | 34,31% |
 | 500 | 5014 | 2145 | 2809 | 30,96% |
 
-We also had to provide total runtime (**_26,816 s_**) and the average value from of last column (**_24,49%_**).
+We also had to provide total runtime (**26,816 s**) and the average value from of last column (**24,49%**).
 
 ## TESTS
 Testing phase looked as follows:
