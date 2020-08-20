@@ -1,15 +1,17 @@
-from copy import deepcopy
-from time import time
 import sys
+
 
 def loadLine(file):
     return [int(i) for i in file.readline().strip().split(' ')]
 
+
 def argmin(arr, key=lambda x: x[1]):
     return min(enumerate(arr), key=key)[0]
 
+
 def argmax(arr, key=lambda x: x[1]):
     return max(enumerate(arr), key=key)[0]
+
 
 def algList():
     with open(sys.argv[1], 'r') as file:
@@ -48,7 +50,7 @@ def algList():
         awaiting.sort(key=lambda x: (min(0, timers[timerId] + x[0] - x[2]), -x[0]))
         popped = awaiting.pop()
         schedules[timerId] += [popped]
-        timers[timerId] = max(timers[timerId], popped[1])  + popped[0]
+        timers[timerId] = max(timers[timerId], popped[1]) + popped[0]
         criterium += max(0, timers[timerId] - popped[2])
         counter += 1
         if counter == n:
@@ -59,9 +61,10 @@ def algList():
             str(criterium) + '\n' +
             '\n'.join([
                 ' '.join([
-                        str(task[3] + 1) for task in schedule
-                    ]) for schedule in schedules
+                    str(task[3] + 1) for task in schedule
+                ]) for schedule in schedules
             ])
         )
+
 
 algList()

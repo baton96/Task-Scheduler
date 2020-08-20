@@ -1,15 +1,19 @@
+import sys
 from copy import deepcopy
 from time import time
-import sys
+
 
 def loadLine(file):
     return [int(i) for i in file.readline().strip().split(' ')]
 
+
 def argmin(arr, key=lambda x: x[1]):
     return min(enumerate(arr), key=key)[0]
 
+
 def argmax(arr, key=lambda x: x[1]):
     return max(enumerate(arr), key=key)[0]
+
 
 def verify(schedules, env):
     result = 0
@@ -20,6 +24,7 @@ def verify(schedules, env):
             timer = max(timer, task[1]) + task[0]
             result += max(0, timer - task[2])
     return result
+
 
 def algAdv(forbidden, env):
     schedules = deepcopy(env['schedules'])
@@ -36,7 +41,7 @@ def algAdv(forbidden, env):
         else:
             timerId = argmin(timers)
         if (time() - env['start']) * 100 > env['n']: return
-        ready = [task for task in awaiting if task[1]<=timers[timerId]]
+        ready = [task for task in awaiting if task[1] <= timers[timerId]]
         if not ready:
             popped = min(
                 [task for task in awaiting if task[1] > timers[timerId]],
@@ -46,13 +51,13 @@ def algAdv(forbidden, env):
         else:
             popped = max(
                 ready,
-                key=lambda x: (min(0,timers[timerId] + x[0] - x[2]), -x[0])
+                key=lambda x: (min(0, timers[timerId] + x[0] - x[2]), -x[0])
             )
         awaiting.remove(popped)
         schedules[timerId] += [popped]
         actualStart = max(timers[timerId], popped[1])
         started[timerId] += [actualStart]
-        timers[timerId] = actualStart  + popped[0]
+        timers[timerId] = actualStart + popped[0]
         counter += 1
         if counter == n:
             criterium = verify(schedules, env)
@@ -66,6 +71,7 @@ def algAdv(forbidden, env):
                 env['timers'] = timers
                 env['break'] = True
             return
+
 
 def algList():
     env = {'start': time(), 'break': False}
@@ -107,7 +113,7 @@ def algList():
         popped = awaiting.pop()
         schedules[timerId] += [popped]
         started[timerId] += [max(timers[timerId], popped[1])]
-        timers[timerId] = max(timers[timerId], popped[1])  + popped[0]
+        timers[timerId] = max(timers[timerId], popped[1]) + popped[0]
         criterium += max(0, timers[timerId] - popped[2])
         counter += 1
         if counter == n:
@@ -140,12 +146,15 @@ def algList():
             if (time() - env['start']) * 100 > env['n']:
                 with open(sys.argv[2], 'w') as output:
                     output.write(str(env['bestCriterium']) + '\n' +
-                        '\n'.join([' '.join([str(i[3] + 1) for i in schedule]) for schedule in env['bestSchedules']]))
+                                 '\n'.join([' '.join([str(i[3] + 1) for i in schedule]) for schedule in
+                                            env['bestSchedules']]))
                 return
         else:
             with open(sys.argv[2], 'w') as output:
                 output.write(str(env['bestCriterium']) + '\n' +
-                    '\n'.join([' '.join([str(i[3] + 1) for i in schedule]) for schedule in env['bestSchedules']]))
+                             '\n'.join(
+                                 [' '.join([str(i[3] + 1) for i in schedule]) for schedule in env['bestSchedules']]))
             return
+
 
 algList()
