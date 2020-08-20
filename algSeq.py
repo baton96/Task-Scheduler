@@ -5,13 +5,15 @@ def loadLine(file):
     return [int(i) for i in file.readline().strip().split(' ')]
 
 
+# I had to write my own argmin and argmax functions as we
+# weren't allowed to used any of non-built-in libs like numpy
 def argmin(arr, key=lambda x: x[1]):
     return min(enumerate(arr), key=key)[0]
 
 
 def argmax(arr, key=lambda x: x[1]):
     return max(enumerate(arr), key=key)[0]
-
+#
 
 def algList():
     with open(sys.argv[1], 'r') as file:
