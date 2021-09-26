@@ -1,7 +1,9 @@
 from dataclasses import dataclass
 
-def loadLine(file):
+
+def load_line(file):
     return [int(i) for i in file.readline().strip().split(' ')]
+
 
 @dataclass
 class Task:
@@ -15,6 +17,7 @@ class Task:
 # weren't allowed to used any of non-built-in libs like numpy
 def argmin(arr):
     return min(enumerate(arr), key=lambda x: x[1])[0]
+
 
 def argmax(arr):
     return max(enumerate(arr), key=lambda x: x[1])[0]

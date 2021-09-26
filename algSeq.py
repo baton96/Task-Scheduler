@@ -1,18 +1,17 @@
+from utils import argmin, load_line, Task
 import sys
 
-from utils import argmin, loadLine, Task
 
-
-def algList():
+def alg_list():
     with open(sys.argv[1], 'r') as file:
-        n = loadLine(file)[0]
-        tasks = [Task(*loadLine(file), i) for i in range(n)]
-    tasks = sorted(tasks, key=lambda x: x.r)
+        n = load_line(file)[0]
+        tasks = [Task(*load_line(file), i) for i in range(n)]
+    tasks = sorted(tasks, key=lambda task: task.r)
 
-    awaiting = []
     schedules = [[], [], [], []]
     timers = [0, 0, 0, 0]
     criterium = 0
+    awaiting = []
     counter = 0
     it = 0
 
@@ -37,7 +36,7 @@ def algList():
                     break
             else:
                 it = n
-        awaiting.sort(key=lambda x: (min(0, timers[timerId] + x.p - x.d), -x.p))
+        awaiting.sort(key=lambda task: (min(0, timers[timerId] + task.p - task.d), -task.p))
         popped = awaiting.pop()
         schedules[timerId] += [popped]
         timers[timerId] = max(timers[timerId], popped.r) + popped.p
@@ -57,4 +56,4 @@ def algList():
         )
 
 
-algList()
+alg_list()
