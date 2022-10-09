@@ -1,7 +1,7 @@
 # ⏳ Task-Scheduler ⏳
-This task scheduling algorithms achieved the best results for **86,43%** of the input instances among all sequential (assigning tasks one by one) algorithms and **61,24%** among all advanced (allowing post-optimization) algorithms implemented in laboratory group.
+This task scheduling algorithms achieved the best results for **86,43%** of the input instances among all sequential (assigning tasks one by one) algorithms and **61,24%** among all advanced (allowing post-optimization) algorithms implemented in my laboratory group.
 ## GOAL
-The goal was to propose an algorithm assigning n indivisible tasks Tj (described by the duration pj, ready time rj and expected finish time dj) to 4 identical, parallel machines and determining the order of their execution on the machines minimizing the sum of delays ΣDj between expected finish time dj and actual finish time Cj given the formula Dj = max(0, Cj-dj). In order to compare algorithms implemented in laboratory group it was required to standardize their input and output format.
+The goal was to propose an algorithm assigning n indivisible tasks T<sub>j</sub> (described by the duration p<sub>j</sub>, ready time r<sub>j</sub> and expected finish time d<sub>j</sub>) to 4 identical, parallel machines and determining the order of their execution on the machines minimizing the sum of delays ΣDj between expected finish time dj and actual finish time C<sub>j</sub> given the formula D<sub>j</sub> = max(0, C<sub>j</sub>-d<sub>j</sub>). In order to compare algorithms implemented in laboratory group it was required to standardize their input and output format.
 ## INPUT
 Initially instances were generated and saved in a text file with the following format:
 ```
@@ -11,7 +11,7 @@ p2 r2 d2
 … … …
 pn rn dn
 ```
-(number of tasks n in the first line the and in every other line duration pj, ready time rj and expected finish time dj separated by a spaces)
+(number of tasks n in the first line the and in every other line duration p<sub>j</sub>, ready time r<sub>j</sub> and expected finish time d<sub>j</sub> separated by a spaces)
 
 Each person in the group generated (and made available to everyone) 10 instances of the problem for the number of tasks **n** equal to 50, 100, 150, 200, 250, 300, 350, 400, 450 and 500.
 ## OUTPUT
@@ -27,7 +27,7 @@ T4.1 T4.2 …
 ## VERIFIER
 In order to verify correctness (correct sum of delays for the given instance and schedule) of the solution a verifier was required.
 ## BASE ALGORITHM
-Base algorithm had to return a solution containing all the tasks in the ascending order divided in a way that the first three machines are assigned with ⌈n/4⌉ tasks and the last machine with remaining tasks. Solution has to start with the sum of delays Dj, in the first line, calculated for the given instance and schedule. Solution for n=10 looks as follows: 
+Base algorithm had to return a solution containing all the tasks in the ascending order divided in a way that the first three machines are assigned with ⌈n/4⌉ tasks and the last machine with remaining tasks. Solution has to start with the sum of delays D<sub>j</sub>, in the first line, calculated for the given instance and schedule. Solution for n=10 looks as follows: 
 ```
 ΣDj
 1 2 3
